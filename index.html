@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet"> 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arvo&family=Exo+2&display=swap" rel="stylesheet">   
+<title>Document</title>
+</head>
+<body>
+    <main>
+        <div class="container">
+        <div class="section1">
+                    <div class="card-front">
+                        <div class="decoration">
+                            <div class="circle-bkgnd"></div>
+                            <div class="circle-border"></div>
+                        </div>
+                        <div class="card-number">
+                            <input class="input-card" id="input-number-card" type="text">
+                        </div>
+                        <div class="card-name-date">
+                            <div class="card-name">
+                                <input class="input-card" id="input-name-card" type="text">
+                            </div>
+                            <div class="card-date">
+                                <input class="input-card-exp" id="input-month-card" type="text">
+                                <input class="input-card-exp" id="input-year-card" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                            <input  id="input-cvc" type="text">
+                    </div>
+        </div>
+        <div class="section2">
+            <form id="form" class="datos">
+                <div class="div-form" >
+                    <label for="nombre">CARDHOLDER NAME</label>
+                    <input type="text" class="form-control" id="name">
+                </div>
+                <div class="div-form">
+                    <label for="cardNumber">CARD NUMBER</label>
+                    <input type="text" class="form-control" id="cardNumber">
+                </div>
+                <div class="div-form-flex">
+                    <div class="div-form">
+                        <label>EXP. DATE (MM/YY)</label>
+                        <div class="div-form-flex" >
+                            <input class="exp-date" id="margin-day" type="text">
+                            <input class="exp-date" id="margin-year" type="text">
+                        </div>
+                    </div>
+                    <div  class="div-form">
+                        <label for="cvc">CVC</label>
+                        <input id="cvc" class="form-control" type="text" >
+                    </div>
+                </div>
+                <div class="div-form"">
+                    <button id="form-button" type="submit">Confirm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </main>
+</body>
+<script>
+    const form = document.getElementById('form')
+    const inputName = document.getElementById('name')
+    const inputCard = document.getElementById('cardNumber')
+    const inputMonth = document.getElementById('margin-day')
+    const inputYear = document.getElementById('margin-year')
+    const inputCvc = document.getElementById('cvc')
+    const outputCard = document.getElementById('input-number-card')
+    const outputName = document.getElementById('input-name-card')
+    const outputYear = document.getElementById('input-year-card')
+    const outputMonth = document.getElementById('input-month-card');
+    const outputCvc = document.getElementById('input-cvc');
+
+    form.addEventListener('submit', function(event){
+        event.preventDefault();
+      if (inputName.value && inputCard.value && inputMonth.value && inputYear.value && inputCvc.value){
+      alert("Todos los campos estan completos");
+      form.reset()
+      }else{ 
+      alert("Falta completar campos")
+      }
+    });
+
+    inputName.addEventListener('input', ()=>{
+        outputName.value = inputName.value;
+    })
+    inputCard.addEventListener('input', ()=>{
+        outputCard.value = inputCard.value;
+    })
+    inputYear.addEventListener('input', ()=>{
+        outputYear.value = inputYear.value;
+    })
+    inputMonth.addEventListener('input', ()=>{
+        outputMonth.value = inputMonth.value;
+    })
+    inputCvc.addEventListener('input', ()=>{
+        outputCvc.value = inputCvc.value;
+    })
+
+    inputCard.addEventListener('input', ()=>{
+        let valueCard = inputCard.value;
+        let cleanedValue = valueCard.replace(/\D/g, "");
+        let groups = cleanedValue.match(/.{1,4}/g);
+        let formattedValue = groups ? groups.join(" ") : "";
+        inputCard.value = formattedValue;
+        outputCardImg.value = inputCard.value;
+    })
+      </script>
+</html>
