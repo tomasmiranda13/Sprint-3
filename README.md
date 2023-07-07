@@ -1,4 +1,6 @@
-# Sprint2
-Sgundo proyecto creado en Senpai Academy
+# Sprint3
 
-HTML, CSS + media querys
+Tercer proyecto creado en Senpai Academy
+
+-HTML, CSS + media querys
+-DOM
